@@ -5,7 +5,7 @@
 #include <typeinfo>
 //zmienne globalne
 int ipaddress[3] = {};
-int maska[3]={};
+int maska_split[3]={};
 int binip[3]={};
 int oktetlicz=1;
 
@@ -59,10 +59,10 @@ int inputmaska_fnc(std::string maska)
     }
 	
 	//nadpisuje zmienn¹ globaln¹ wartosciami wpisanymi przez user'a        
-  	maska[0] = vect.at(0);
-	maska[1] = vect.at(1);
-	maska[2] = vect.at(2);
-	maska[3] = vect.at(3);    
+  	maska_split[0] = vect.at(0);
+	maska_split[1] = vect.at(1);
+	maska_split[2] = vect.at(2);
+	maska_split[3] = vect.at(3);    
 }
 
 //funkcja sprawdzajaca poprawnoœæ adresu ip
@@ -96,8 +96,51 @@ int correctip_fnc(int oktet1, int oktet2, int oktet3, int oktet4)
 //funkcja sprawdzajaca poprawnoœæ maski
 int correctmaska_fnc(int oktet1, int oktet2, int oktet3, int oktet4)
 { 
+	int blad=0;
 	std::cout <<"Poprawnosc zapisu maski:" <<std::endl;
-	std::cout<<"work in inprogress"<<std::endl;	
+	if(oktet1 == 128 ||oktet1 ==192 ||oktet1 ==224 ||oktet1 ==240 ||oktet1 ==248 ||oktet1 ==252 ||oktet1 ==254 ||oktet1 ==255 ||oktet1 == 0){
+	}
+	else{
+		std::cout<<"1 oktet bledny"<<std::endl;
+		blad ++;
+	}
+	if(oktet2 == 128 ||oktet2 ==192 ||oktet2 ==224 ||oktet2 ==240 ||oktet2 ==248 ||oktet2 ==252 ||oktet2 ==254 ||oktet2 ==255 ||oktet2 == 0){
+	}
+	else{
+		std::cout<<"2 oktet bledny"<<std::endl;
+		blad ++;
+	}
+	if(oktet3 == 128 ||oktet3 ==192 ||oktet3 ==224 ||oktet3 ==240 ||oktet3 ==248 ||oktet3 ==252 ||oktet3 ==254 ||oktet3 ==255 ||oktet3 == 0){
+	}
+	else{
+		std::cout<<"3 oktet bledny"<<std::endl;
+		blad ++;
+	}
+	if(oktet4 == 128 ||oktet4 ==192 ||oktet4 ==224 ||oktet4 ==240 ||oktet4 ==248 ||oktet4 ==252 ||oktet4 ==254 ||oktet4 ==255 ||oktet4 == 0){
+	}
+	else{
+		std::cout<<"4 oktet bledny"<<std::endl;
+		blad ++;
+	}
+	if(oktet2 > oktet1){
+		std::cout<<"oktet 2 wiekszy niz oktet 1"<<std::endl;
+		blad++;
+	}
+	if(oktet3 > oktet2){
+		std::cout<<"oktet 3 wiekszy niz oktet 2"<<std::endl;
+		blad++;
+	}
+	if(oktet4 > oktet3){
+		std::cout<<"oktet 4 wiekszy niz oktet 3"<<std::endl;
+		blad++;
+	}
+	if(blad > 0){
+		std::cout<<"Zamykam program"<<std::endl;
+		exit(0);
+	}
+	else{
+		std::cout<<"Maska poprawna"<<std::endl;
+	}
 }
 
 //funkcja sprawdzania klas
@@ -281,20 +324,23 @@ int main()
 	std::cout<<"Podaj adres IP: ";
 	std::string ip;
 	std::cin>>ip;
-	//std::cout<<"Podaj maske: ";
-	//std::string maska;
-	//std::cin>>maska;
+	std::cout<<"Podaj maske: ";
+	std::string maska;
+	std::cin>>maska;
 	pasek_fnc();
 	
 	//funkcja dzielanie podanego adresu na czesci(nic nie wyœwietla)
 	inputip_fnc(ip);
 	
+	//funkcja dzielanie podanej maski na czesci(nic nie wyœwietla)
+	inputmaska_fnc(maska);
+		
 	//funkcja sprawdzaj¹ca poprawnoœæ oktetów
 	correctip_fnc(ipaddress[0],ipaddress[1],ipaddress[2],ipaddress[3]);
 	pasek_fnc();
 	
 	//funkcja sprawdzaj¹ca poprawnoœæ maski
-	correctmaska_fnc(maska[0],maska[1],maska[2],maska[3]);
+	correctmaska_fnc(maska_split[0],maska_split[1],maska_split[2],maska_split[3]);
 	pasek_fnc();
 	
 	//funkcja sprawdzajaca klase adresu ip
