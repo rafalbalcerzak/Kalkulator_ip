@@ -14,7 +14,7 @@ int pasek_fnc(){
 		
 }
 
-//funkcja dzieli ip na oktety i nadpisuje zmienn¹ globaln¹
+//funkcja dzieli ip na oktety i nadpisuje zmiennÂ¹ globalnÂ¹
 int inputip_fnc(std::string ip)
 {
 	std::vector<int> vect;
@@ -30,7 +30,7 @@ int inputip_fnc(std::string ip)
             ss.ignore();
     }
 	
-	//nadpisuje zmienn¹ globaln¹ wartosciami wpisanymi przez user'a        
+	//nadpisuje zmiennÂ¹ globalnÂ¹ wartosciami wpisanymi przez user'a        
  	ipaddress[0] = vect.at(0);
 	ipaddress[1] = vect.at(1);
 	ipaddress[2] = vect.at(2);
@@ -51,14 +51,14 @@ int inputmaska_fnc(std::string maska)
             ss.ignore();
     }
 	
-	//nadpisuje zmienn¹ globaln¹ wartosciami wpisanymi przez user'a        
+	//nadpisuje zmiennÂ¹ globalnÂ¹ wartosciami wpisanymi przez user'a        
   	maska[0] = vect.at(0);
 	maska[1] = vect.at(1);
 	maska[2] = vect.at(2);
 	maska[3] = vect.at(3);    
 }
 
-//funkcja sprawdzajaca poprawnoœæ adresu ip
+//funkcja sprawdzajaca poprawnoÅ“Ã¦ adresu ip
 int correctip_fnc(int oktet1, int oktet2, int oktet3, int oktet4)
 { 
 	std::cout <<"Poprawnosc zapisu IP:" <<std::endl;
@@ -86,7 +86,7 @@ int correctip_fnc(int oktet1, int oktet2, int oktet3, int oktet4)
 	
 }
 
-//funkcja sprawdzajaca poprawnoœæ maski
+//funkcja sprawdzajaca poprawnoÅ“Ã¦ maski
 int correctmaska_fnc(int oktet1, int oktet2, int oktet3, int oktet4)
 { 
 	std::cout <<"Poprawnosc zapisu maski:" <<std::endl;
@@ -121,7 +121,7 @@ int klasy_fnc(int a){
 	return 0;
 }
 
-//funkcja konwrtuj¹ca na sysytem binarny
+//funkcja konwrtujÂ¹ca na sysytem binarny
 int dectobin_fnc(int oktet)
 {
 	std::string bin="00000000";
@@ -267,14 +267,14 @@ int main()
 	std::cin>>maska;
 	pasek_fnc();
 	
-	//funkcja dzielanie podanego adresu na czesci(nic nie wyœwietla)
+	//funkcja dzielanie podanego adresu na czesci(nic nie wyÅ“wietla)
 	inputip_fnc(ip);
 	
-	//funkcja sprawdzaj¹ca poprawnoœæ oktetów
+	//funkcja sprawdzajÂ¹ca poprawnoÅ“Ã¦ oktetÃ³w
 	correctip_fnc(ipaddress[0],ipaddress[1],ipaddress[2],ipaddress[3]);
 	pasek_fnc();
 	
-	//funkcja sprawdzaj¹ca poprawnoœæ maski
+	//funkcja sprawdzajÂ¹ca poprawnoÅ“Ã¦ maski
 	correctmaska_fnc(maska[0],maska[1],maska[2],maska[3]);
 	pasek_fnc();
 	
@@ -319,7 +319,7 @@ int main()
 	pasek_fnc();
 	
 	//a tu Work in progress
-	std::cout<<"work in inprogress"<<std::endl;	
+	std::cout<<"work in progress"<<std::endl;	
 	pasek_fnc(); 
 	
 }
